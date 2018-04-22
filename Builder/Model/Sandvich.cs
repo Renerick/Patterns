@@ -1,16 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Builder.Model
 {
     public class Sandwich
     {
-        public List<IToping> Topings { get; set; }
-        public IBreadType BreadType { get; set; }
+        private readonly List<ITopping> _toppings;
+        private readonly IBreadType _breadType;
+
+        public Sandwich(IBreadType breadType)
+        {
+            _breadType = breadType ?? throw new ArgumentNullException(nameof(breadType));
+            _toppings = new List<ITopping>();
+        }
+
+        public void AddTopping(ITopping topping)
+        {
+            _toppings.Add(topping ?? throw new ArgumentNullException());
+        }
 
         public override string ToString() => 
-            $"Это сэндвич. Он сделан на основе {BreadType.Name} и содержит\n{string.Join(",\n", Topings.Select(t => t.Name))}\n" +
-            $"Его пищевая ценность: {Topings.Sum(toping => toping.Value) + BreadType.Value}";
+            $"Это сэндвич. Он сделан на основе {_breadType.Name} и содержит\n{string.Join(",\n", _toppings.Select(t => t.Name))}\n" +
+            $"Его пищевая ценность: {_toppings.Sum(toping => toping.Value) + _breadType.Value}";
     }
 
     public interface ISandvichComponent
@@ -23,7 +35,7 @@ namespace Builder.Model
     {
     }
 
-    public interface IToping : ISandvichComponent
+    public interface ITopping : ISandvichComponent
     {
     }
 }

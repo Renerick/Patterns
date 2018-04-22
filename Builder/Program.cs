@@ -8,12 +8,11 @@ namespace Builder
     {
         static void Main(string[] args)
         {
-            var sandvich = new Sandwich
-            {
-                Topings = new List<IToping> {null, new SaladToping()},
-                BreadType = new RyeBread()
-            };
-            Console.WriteLine(sandvich.ToString());
+            var sandwich = new Sandwich(new RyeBread());
+            sandwich.AddTopping(new CheeseTopping());
+            sandwich.AddTopping(new ChickenTopping());
+            sandwich.AddTopping(new SaladTopping());
+            Console.WriteLine(sandwich.ToString());
         }
     }
 }
