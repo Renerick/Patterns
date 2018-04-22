@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Builder.Model;
 
 namespace Builder
 {
     internal static class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            ISandwichBuilder builder = new SandwichBuilder();
-            builder.AddTopping(new CheeseTopping());
-            builder.AddTopping(new SaladTopping());
-            builder.SetBreadType(new RyeBread());
-            Console.WriteLine(builder.Cook());
+            var director = new SandwichDirector();
+            var builder = new SandwichBuilder();
+            Console.WriteLine(director.MakeVeganSandwich(builder));
+            Console.WriteLine();
+            Console.WriteLine(director.MakeSimpleSandwich(builder));
         }
     }
 }

@@ -30,5 +30,12 @@ namespace Builder.Model
         {
             _toppings.Add(topping ?? throw new ArgumentNullException());
         }
+
+        public void Reset()
+        {
+            _toppings.Clear();
+            _breadType = null;
+            _sauceType = null;
+        }
     }
 }

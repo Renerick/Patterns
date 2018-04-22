@@ -6,5 +6,6 @@
         void SetBreadType(IBreadType breadType);
         void SetSauceType(ISauceType sauceType);
         void AddTopping(ITopping topping);
+        void Reset();
     }
 }
