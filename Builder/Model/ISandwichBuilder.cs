@@ -3,9 +3,9 @@
     public interface ISandwichBuilder
     {
         Sandwich Cook();
-        void SetBreadType(IBreadType breadType);
-        void SetSauceType(ISauceType sauceType);
-        void AddTopping(ITopping topping);
-        void Reset();
+        ISandwichBuilder SetBreadType(IBreadType breadType);
+        ISandwichBuilder SetSauceType(ISauceType sauceType);
+        ISandwichBuilder AddTopping(ITopping topping);
+        ISandwichBuilder Reset();
     }
 }

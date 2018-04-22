@@ -16,26 +16,30 @@ namespace Builder.Model
             return new Sandwich(_breadType, _sauceType, _toppings);
         }
 
-        public void SetBreadType(IBreadType breadType)
+        public ISandwichBuilder SetBreadType(IBreadType breadType)
         {
             _breadType = breadType;
+            return this;
         }
 
-        public void SetSauceType(ISauceType sauceType)
+        public ISandwichBuilder SetSauceType(ISauceType sauceType)
         {
             _sauceType = sauceType;
+            return this;
         }
 
-        public void AddTopping(ITopping topping)
+        public ISandwichBuilder AddTopping(ITopping topping)
         {
             _toppings.Add(topping ?? throw new ArgumentNullException());
+            return this;
         }
 
-        public void Reset()
+        public ISandwichBuilder Reset()
         {
             _toppings.Clear();
             _breadType = null;
             _sauceType = null;
+            return this;
         }
     }
 }

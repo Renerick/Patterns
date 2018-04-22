@@ -8,11 +8,12 @@ namespace Builder
     {
         private static void Main()
         {
-            var director = new SandwichDirector();
-            var builder = new SandwichBuilder();
-            Console.WriteLine(director.MakeVeganSandwich(builder));
-            Console.WriteLine();
-            Console.WriteLine(director.MakeSimpleSandwich(builder));
+            var sandwich = new SandwichBuilder().SetBreadType(new RyeBread())
+                                                .AddTopping(new TomatoTopping())
+                                                .AddTopping(new ChickenTopping())
+                                                .SetSauceType(new Ketchup())
+                                                .Cook();
+            Console.WriteLine(sandwich.ToString());
         }
     }
 }
